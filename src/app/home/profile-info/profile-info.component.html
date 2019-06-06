@@ -1,0 +1,14 @@
+<div class="profile-info-container">
+  <div class="col-sm-3 col-md-12 image-container">
+    <img *ngIf="profilePicture" [src]="profilePicture" class="img-thumbnail">
+  </div>
+  <div class="col-sm-9 col-md-12 text-container">
+    <div style="text-align: center; width: 100%">
+      <h3>{{profileDetails.fname}} {{profileDetails.lname}}</h3>
+      <p style="margin-top: 50px;">{{profileDetails.gender}}, {{profileDetails.country}}, {{profileDetails.state}}</p>
+      <p class="mb-1">Birthday : {{profileDetails.dob | date: fullDate}}</p>
+      <p class="mb-0">Contact : {{profileDetails.phone}}</p>
+      <p>Email : {{profileDetails.email}}</p>
+    </div>
+  </div>
+</div>

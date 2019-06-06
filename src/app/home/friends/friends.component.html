@@ -1,0 +1,21 @@
+<div class="row friend-container mt-4">
+  <div class="text-container col-xs-12 col-sm-4" 
+              routerLinkActive="friend-link-active" 
+              [routerLinkActiveOptions]="{exact:true}" 
+              routerLink='/home/friend'>
+    My Friends
+  </div>
+  <div class="text-container col-xs-12 col-sm-4" 
+              routerLinkActive="friend-link-active" 
+              routerLink='/home/friend/requests'>
+    New Requests
+    <span *ngIf="friendRequests > 0">({{friendRequests}})</span>
+  </div>
+  <div class="text-container col-xs-12 col-sm-4" 
+            routerLinkActive="friend-link-active" 
+            routerLink='/home/friend/find'>
+    Find People
+  </div>
+</div>
+
+<router-outlet></router-outlet>

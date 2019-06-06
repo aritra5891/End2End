@@ -1,0 +1,10 @@
+.profile-info {
+    background-color: rgb(0,123,255, 0.58);
+    min-height: 94vh;
+}
+
+@media (max-width: 767px) {
+  .profile-info {
+    display: none;
+  }
+}

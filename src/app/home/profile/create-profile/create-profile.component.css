@@ -1,0 +1,10 @@
+.invalid-feedback {
+    display: block !important;
+    font-weight: 600;
+}
+button:disabled {
+    background-color: rgb(136,180,227);
+    border-color : rgb(136,180,227);
+    color: black;
+    cursor: not-allowed; 
+}

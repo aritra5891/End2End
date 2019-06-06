@@ -1,0 +1,28 @@
+<div class="col-sm-12 image-container">
+   <img *ngIf="profilepic" [src]="profilepic" class="rounded">
+</div>
+<p class="name">{{profile.fname}} {{profile.lname}}</p>
+<p>{{profile.gender}}, {{profile.dob | age}}, {{profile.state}}</p>
+
+<div class="d-flex flex-row">
+    <div *ngIf="profile.type == 'friend'" class="p-2 btn-wrapper">
+        <button type="button" class="btn btn-primary ">Message</button>
+    </div> 
+    <div *ngIf="profile.type == 'request_by'" class="p-2 btn-wrapper">
+        <button type="button" class="btn btn-success ">Accept</button>
+    </div>
+    <div *ngIf="profile.type == 'request_by'" class="p-2 btn-wrapper">
+        <button type="button" class="btn btn-danger ">Decline</button>
+    </div>
+    <div *ngIf="profile.type == 'others'" class="p-2 btn-wrapper">
+        <button type="button" class="btn btn-primary ">Add Friend</button>
+    </div>
+
+    <div *ngIf="profile.type == 'request_to'" class="p-2 btn-wrapper">
+        <button type="button" class="btn btn-primary" disabled>Send</button>
+    </div>   
+    <div *ngIf="profile.type == 'request_to'" class="p-2 btn-wrapper">
+        <button type="button" class="btn btn-danger ">Cancel</button>
+    </div>
+   
+</div>

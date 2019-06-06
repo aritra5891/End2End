@@ -1,0 +1,20 @@
+
+<div class="form-container col-sm-12 col-md-6 col-lg-4">
+  <h4>Register</h4>
+  <form class="form-horizontal" [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="form-group">
+      <label class="control-label" for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email">
+      <img *ngIf="registerForm.get('email').pending" [src]="'assets/images/loading.gif'" alt="image">
+      <span *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched && !registerForm.get('email').pending && !registerForm.get('email').errors?.emailInvalid">Enter a valid Email</span>
+      <span *ngIf="registerForm.get('email').errors?.emailInvalid">This Email is Already Used</span>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" formControlName="password">
+      <span *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">Password is required!</span>
+    </div>
+    <button class="btn btn-primary" [disabled]="registerForm.status === 'INVALID' || registerForm.status === 'PENDING'" type="submit">REGISTER</button>
+  </form>
+  <p class="login-text">You can  <a routerLink='/user/login'>login</a> to your account from here.</p>
+</div>

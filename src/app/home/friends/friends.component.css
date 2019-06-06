@@ -1,0 +1,23 @@
+.friend-container {
+    margin: 20px;
+    background-color: rgb(0,0,255, 0.21);
+    font-weight: 600;
+}
+.text-container {
+    padding: 10px;
+    text-align: center;
+    outline: none;
+     
+}
+.text-container:hover {
+    background-color: rgb(0,0,255, 0.60);
+    color: white !important;
+    cursor: pointer;
+}
+.friend-link {
+    color: black;
+    text-decoration: none;
+}
+.friend-link-active {
+    background-color: rgb(0,0,255, 0.30);
+}

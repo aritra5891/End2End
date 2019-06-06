@@ -1,0 +1,21 @@
+<div *ngIf="!profileComplete" class="mt-3 alert alert-warning col-sm-12 col-md-8 col-lg-6" role="alert">
+  Hi <strong>{{userEmail}},</strong> please complete the rest of your profile to continue!
+</div>
+
+<!--<div *ngIf="profileComplete" class="col-sm-4 col-md-3 col-lg-3 profile-info">
+  <app-profile-info [profileDetails]="profileDetails"></app-profile-info>
+</div>
+
+
+<div class="col-sm-8 col-md-9 col-lg-9 router-outlet">
+  <router-outlet></router-outlet>
+</div>-->
+<div class="row">
+  <div *ngIf="profileComplete" class="col-sm-12 col-md-4 col-lg-3 profile-info float-left">
+    <app-profile-info [profileDetails]="profileDetails"></app-profile-info>
+  </div>
+
+  <div class="col-sm-12 col-md-8 col-lg-9 float-left router-outlet">
+    <router-outlet></router-outlet>
+  </div>
+</div>

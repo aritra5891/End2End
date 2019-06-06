@@ -1,0 +1,13 @@
+nav {
+    z-index: 200;
+}
+img {
+    width: 36px;
+    margin-right: 10px;
+}
+.navbar-text {
+    padding: 0px;
+}
+.logout-link {
+    cursor: pointer;
+}

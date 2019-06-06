@@ -1,0 +1,89 @@
+<div *ngIf="showDefaultAlert" class="mt-3 alert alert-secondary col-sm-12 col-md-8 col-lg-6" role="alert">
+  Hi <strong>{{profileDetails.fname}},</strong> please update the fields you wish to change!
+</div>
+
+<div *ngIf="!showDefaultAlert" class="mt-3 alert alert-success alert-dismissible fade show col-sm-12 col-md-8 col-lg-6" role="alert">
+  Congrats <strong>{{profileDetails.fname}},</strong> profile datails saved!
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click) = "showDefaultAlert = true;">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="form-container col-sm-12 col-md-8 col-lg-6">
+  <form class="form-horizontal" [formGroup]="profileForm" (ngSubmit)="updateProfile(); profileForm.pristine = true;">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="fname">First Name</label>
+        <input type="text" class="form-control" id="fname" placeholder="First Name" formControlName="fname">
+        <span *ngIf = "!profileForm.get('fname').valid && profileForm.get('fname').touched" class="invalid-feedback">Enter a valid First Name.</span>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lname">Last Name</label>
+        <input type="text" class="form-control" id="lname" placeholder="Last Name" formControlName="lname">
+        <span *ngIf = "!profileForm.get('lname').valid && profileForm.get('lname').touched" class="invalid-feedback">Enter a valid Last Name.</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" formControlName="email" readonly>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="phone">Phone Number</label>
+        <input type="text" class="form-control" id="phone" placeholder="Phone Number" formControlName="phone">
+        <span *ngIf = "!profileForm.get('phone').valid && profileForm.get('phone').touched" class="invalid-feedback">Enter a valid Phone Number.</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <fieldset class="form-group col-md-6">
+        <div class="row">
+          <legend class="col-form-label col-sm-4 pt-0">Gender</legend>
+          <div class="col-sm-8">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" formControlName="gender" id="gender1" value="Male">
+              <label class="form-check-label" for="gender1">Male</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" formControlName="gender" id="gender2" value="Female">
+              <label class="form-check-label" for="gender2">Female</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div class="form-group col-md-6">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" placeholder="Birth Date" formControlName="dob">
+        <span *ngIf = "!profileForm.get('dob').valid && profileForm.get('dob').touched" class="invalid-feedback">Enter a Valid Date of Birth.</span>
+        <span *ngIf="profileForm.get('dob').errors?.futureDate" class="invalid-feedback">Age Cannot be less than 18.</span>
+        <span *ngIf="profileForm.get('dob').errors?.pastDate" class="invalid-feedback">Age Cannot be more than 100.</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="country">Country</label>
+        <input type="text" class="form-control" id="country" formControlName="country" readonly>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="state">State</label>
+        <select id="state" class="form-control" formControlName="state">
+          <option *ngFor="let state of states" [value]="state">{{state}}</option>
+        </select>
+        <span *ngIf = "!profileForm.get('state').valid && profileForm.get('state').touched" class="invalid-feedback">Enter a valid State.</span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="picture">Profile Picture (optional)</label>
+        <input type="text" class="form-control" id="picture" placeholder="Enter Picture URL" formControlName="picture">
+        <span *ngIf = "!profileForm.get('picture').valid && profileForm.get('picture').touched" class="invalid-feedback">Enter a valid Image Format.</span>
+      </div>
+    </div>
+    
+    <button class="btn btn-primary" [disabled]="profileForm.status === 'INVALID' || profileForm.pristine" type="submit">COMPLETE PROFILE</button>
+  
+  </form>
+</div>

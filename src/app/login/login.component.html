@@ -1,0 +1,21 @@
+<div class="form-container col-sm-12 col-md-6 col-lg-4">
+  <h4>Login</h4>
+  <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="form-group">
+      <label class="control-label" for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email">
+      <img *ngIf="loginForm.get('email').pending" [src]="'assets/images/loading.gif'" alt="image">
+      <span *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched && !loginForm.get('email').pending && !loginForm.get('email').errors?.emailInvalid">Enter a valid Email</span>
+      <span *ngIf="loginForm.get('email').errors?.emailInvalid">There is no such user with this E-mail ID</span>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" formControlName="password">
+      <span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched && !loginForm.get('password').errors?.incorrect">Password is required!</span>
+      <span *ngIf="loginForm.get('password').errors?.incorrect">Invalid Password</span>
+    </div>
+    <button class="btn btn-primary" [disabled]="loginForm.status === 'INVALID' || loginForm.status === 'PENDING'" type="submit">LOGIN</button>
+  </form>
+  <p class="login-text">Create a <a routerLink='/user/register'>new account</a> from here.</p>
+</div>
+
